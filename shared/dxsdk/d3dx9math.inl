@@ -990,7 +990,12 @@ D3DXINLINE void*
 _D3DXMATRIXA16::operator new( size_t s )
 {
     if (s > (SIZE_MAX-16))
-	return NULL;
+    {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnew-returns-null"
+	    return NULL;
+#pragma GCC diagnostic pop
+    }
     LPBYTE p = ::new BYTE[s + 16];
     if (p)
     {
@@ -1005,7 +1010,12 @@ D3DXINLINE void*
 _D3DXMATRIXA16::operator new[]( size_t s )
 {
     if (s > (SIZE_MAX-16))
-	return NULL;
+    {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnew-returns-null"
+	    return NULL;
+#pragma GCC diagnostic pop
+    }
     LPBYTE p = ::new BYTE[s + 16];
     if (p)
     {

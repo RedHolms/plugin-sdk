@@ -179,11 +179,6 @@ struct _RwInt128
 #if (defined(_MSC_VER))
 
 #include <math.h>
-/*
- * Keep true calls to these functions since
- * some x86 runtime libraries do not support _CIpow() etc
- */
-#pragma function( acos, asin, cosh, fmod, pow, sinh , tanh ) 
 
 #if (!defined(RWINT32FROMFLOAT))
 
